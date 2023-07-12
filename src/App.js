@@ -3,11 +3,17 @@ import './styles/App.css';
 import PostItem from "./components/PostItem";
 
 function App() {
-  const [value, setValue] = useState('some text');
+  const [posts, setPosts] = useState([
+      {id: 1, title: 'JavaScript', body: 'Description'},
+      {id: 2, title: 'JavaScript 2', body: 'Description'},
+      {id: 3, title: 'JavaScript 3', body: 'Description'},
+  ]);
 
   return (
     <div className="App">
-        <PostItem />
+        {posts.map(post =>
+            <PostItem post={post} key={post.id} />
+        )}
     </div>
   );
 }
