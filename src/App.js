@@ -12,12 +12,23 @@ function App() {
       {id: 3, title: 'JavaScript 3', body: 'Description'},
   ]);
 
+  const [title, setTitle] = useState('title')
+
+  const addNewPost = (e) => {
+    e.preventDefault(); // 51 minute
+  }
+
   return (
     <div className="App">
         <form>
-            <MyInput type="text" placeholder="Post name"/>
+            <MyInput
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+                type="text"
+                placeholder="Post name"
+            />
             <MyInput type="text" placeholder="Post description"/>
-            <MyButton disabled>Create post</MyButton>
+            <MyButton onClick={addNewPost}>Create post</MyButton>
         </form>
         <PostList posts={posts} title='Posts list 1'/>
     </div>
