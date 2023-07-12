@@ -1,22 +1,12 @@
 import React, {useState} from 'react';
+import Counter from './components/Counter';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [value, setValue] = useState('some text');
-
-  function inc() {
-    setCount(count + 1)
-  }
-  
-  function dec() {
-    setCount(count - 1)
-  }
 
   return (
     <div className="App">
-      <h1>{count}</h1>
-      <button onClick={inc}>Inc</button>
-      <button onClick={dec}>Dec</button>
+      <Counter />
 
       <h1>{value}</h1>
       <input 
