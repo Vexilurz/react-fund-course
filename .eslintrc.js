@@ -28,12 +28,11 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'react/destructuring-assignment': [
-      0,
-      'never',
-      { ignoreClassFields: true, destructureInSignature: 'ignore' },
-    ],
+    'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'no-unused-vars': 'off',
+    'react/prop-types': 'off',
+    'react/button-has-type': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };
