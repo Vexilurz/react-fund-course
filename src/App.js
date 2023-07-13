@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <form>
+      <form className="create-post-form">
         <MyInput
           value={title}
           onChange={(e) => setTitle(e.target.value)}
