@@ -13,7 +13,7 @@
   width: 800px;
 }
 
-.create-post-form {
+.post-form {
   display: flex;
   flex-direction: column;
 }
