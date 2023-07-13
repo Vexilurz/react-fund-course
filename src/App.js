@@ -12,25 +12,30 @@ function App() {
   ]);
 
   const [title, setTitle] = useState('title');
-  const bodyInputRef = useRef();
+  const [body, setBody] = useState('content');
 
   const addNewPost = (e) => {
     e.preventDefault();
+    const newPost = {
+      id: Date.now(),
+      title,
+      body,
+    };
+    setPosts([...posts, newPost]);
   };
 
   return (
     <div className="App">
       <form className="create-post-form">
-        {/* Управляемый компонент */}
         <MyInput
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           placeholder="Post name"
         />
-        {/* Неуправляемый\Неконтролируемый компонент */}
         <MyInput
-          ref={bodyInputRef}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
           type="text"
           placeholder="Post description"
         />
