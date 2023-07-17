@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './styles/App.css';
 
 import axios from 'axios';
@@ -10,11 +10,7 @@ import MyButton from './components/UI/button/MyButton';
 import { usePosts } from './hooks/usePosts';
 
 function App() {
-  const [posts, setPosts] = useState([
-    { id: 1, title: 'JavaScript', body: 'Description' },
-    { id: 2, title: 'JavaScript 2', body: 'Description' },
-    { id: 3, title: 'JavaScript 3', body: 'Description' },
-  ]);
+  const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const [modal, setModal] = useState(false);
 
@@ -31,6 +27,10 @@ function App() {
     );
     setPosts(response.data);
   }
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id));
