@@ -39,5 +39,6 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'react/jsx-no-bind': 'off',
+    'no-plusplus': 'off',
   },
 };
