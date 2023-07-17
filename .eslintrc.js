@@ -40,5 +40,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react/jsx-no-bind': 'off',
     'no-plusplus': 'off',
+    'import/prefer-default-export': 'off',
   },
 };
