@@ -6,9 +6,13 @@ import { AuthContext } from '../../../context/context';
 
 function Navbar() {
   const { setIsAuth } = useContext(AuthContext);
+  const logout = () => {
+    setIsAuth(false);
+    localStorage.removeItem('auth');
+  };
   return (
     <div className={cl.navbar}>
-      <MyButton onClick={() => setIsAuth(false)}>Logout</MyButton>
+      <MyButton onClick={logout}>Logout</MyButton>
       <div className={cl.navbar__links}>
         <Link to="/about">About</Link>
         <Link to="/posts">Posts</Link>
