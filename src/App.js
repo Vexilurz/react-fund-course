@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import './styles/App.css';
 
+import axios from 'axios';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import PostFilter from './components/PostFilter';
@@ -24,12 +25,20 @@ function App() {
     setModal(false);
   };
 
+  async function fetchPosts() {
+    const response = await axios.get(
+      'https://jsonplaceholder.typicode.com/posts'
+    );
+    setPosts(response.data);
+  }
+
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id));
   };
 
   return (
     <div className="App">
+      <MyButton onClick={fetchPosts}>Get posts</MyButton>
       <MyButton style={{ marginTop: 30 }} onClick={() => setModal(true)}>
         Add post
       </MyButton>
