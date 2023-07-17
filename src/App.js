@@ -12,6 +12,7 @@ import Loader from './components/UI/Loader/Loader';
 import useFetching from './hooks/useFetching';
 import { getPagesCount } from './utils/pages';
 import usePagination from './hooks/usePagination';
+import Pagination from './components/UI/pagination/Pagination';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -20,7 +21,7 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-  const pagesArray = usePagination(totalPages);
+
   const [fetchPosts, isPostsLoading, postError] = useFetching(
     async (_limit, _page) => {
       const response = await PostService.getAll(_limit, _page);
@@ -75,17 +76,7 @@ function App() {
           title="Posts list 1"
         />
       )}
-      <div className="page__wrapper">
-        {pagesArray.map((p) => (
-          <span
-            onClick={() => changePage(p)}
-            key={p}
-            className={page === p ? 'page page__current' : 'page'}
-          >
-            {p}
-          </span>
-        ))}
-      </div>
+      <Pagination page={page} changePage={changePage} totalPages={totalPages} />
     </div>
   );
 }
