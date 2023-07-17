@@ -6,11 +6,17 @@ import { AuthContext } from './context/context';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const auth = useMemo(() => ({ isAuth, setIsAuth }), [isAuth]);
+  const [isLoading, setIsLoading] = useState(true);
+  const auth = useMemo(
+    () => ({ isAuth, setIsAuth, isLoading }),
+    [isAuth, isLoading]
+  );
+
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsAuth(true);
     }
+    setIsLoading(false);
   }, []);
   return (
     <AuthContext.Provider value={auth}>
